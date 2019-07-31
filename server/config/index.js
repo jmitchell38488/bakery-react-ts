@@ -12,10 +12,9 @@ const loadConfig = (options) => {
         baseConfigPath = options.baseConfigPath || __dirname,
         nconf = new NConf.Provider();
 
-    nconf.file('overrides', path.join(baseConfigPath, 'default.json'));
+    nconf.use('file', {file: path.join(baseConfigPath, 'default.json')});
 
     nconf.argv();
-
     nconf.env({
         separator: '__',
         parseValues: true
@@ -30,12 +29,11 @@ const loadConfig = (options) => {
 
     // relative path
     if (char !== '/') {
-        nconf.file('custom-env', path.join(appRoot, file.replace('./', '').trim()));
-    } else {
-        nconf.file('custom-env', file);
+        file = path.join(appRoot, file.replace('./', '').trim());
     }
 
-    nconf.file('defaults', path.join(baseConfigPath, 'default.json'));
+    nconf.use('file', {file: file});
+
     nconf.set('env', env);
 
     return nconf;
