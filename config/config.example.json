@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:3000/",
+  "database": {
+    "client": "local"
+  },
+  "server": {
+    "port": 3000
+  },
+  "language": "en",
+  "debug": {
+    "logLevel": 0,
+    "output": "std"
+  }
+}
