@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@koa/cors": "^2.2.3",
+    "@types/node": "^12.6.8",
+    "@types/react": "^16.8.24",
+    "director": "^1.2.8",
     "koa": "^2.7.0",
     "koa-bodyparser": "^2.5.0",
     "koa-helmet": "^4.2.0",
@@ -12,7 +15,8 @@
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "typescript": "^3.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
