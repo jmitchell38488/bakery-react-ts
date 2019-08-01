@@ -6,7 +6,7 @@ export interface ICatalogModel {
     loadCatalog(): Promise<void>;
     getCatalogItems(): Promise<ICatalogItem[]>;
     getBakeryOrder(sku: string, qty: number): Promise<IOrder>;
-    getCatalogItem(sku: string): Promise<ICatalogItem>;
+    getCatalogItem(sku: string): Promise<ICatalogItem | undefined>;
 }
 
 export default class Model implements ICatalogModel {
@@ -34,8 +34,13 @@ export default class Model implements ICatalogModel {
     }
 
     public async getCatalogItems(): Promise<ICatalogItem[]> {
-        await this.loadCatalog();
-        return this.catalog;
+        return await this.loadCatalog()
+            .then(() => this.catalog as ICatalogItem[])
+            .catch(err => {
+                console.error(err.message);
+                return [];
+            });
+
     }
 
     public async getBakeryOrder(sku: string, qty: number): Promise<IOrder> {
@@ -54,9 +59,14 @@ export default class Model implements ICatalogModel {
         return apiData.data as IOrder;
     }
 
-    public async getCatalogItem(sku: string): Promise<ICatalogItem> {
+    public async getCatalogItem(sku: string): Promise<ICatalogItem | undefined> {
         if (this.catalog.length < 1) {
-            await this.loadCatalog();
+            return await this.loadCatalog()
+                .then(() => this.catalog.find(i => i.sku === sku) as ICatalogItem)
+                .catch(err => {
+                    console.error(err.message);
+                    return undefined;
+                });
         }
 
         return this.catalog.find(i => i.sku === sku) as ICatalogItem;
