@@ -33,7 +33,7 @@ class BakeryController {
             }
 
             // Pop an item off the end to try to find the best fit
-            fit = this.getFirstFit(options,qty);
+            fit = this.getFirstFit(options, qty);
             count++;
         }
 

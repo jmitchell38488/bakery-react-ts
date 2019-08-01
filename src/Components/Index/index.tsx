@@ -32,6 +32,7 @@ class Index extends React.Component<AppProps, AppState> {
         setTimeout(async () => {
             let items = await this.model.getCatalogItems();
             this.setState({loaded: true, items: items});
+            return null;
         }, 1200);
     }
 
