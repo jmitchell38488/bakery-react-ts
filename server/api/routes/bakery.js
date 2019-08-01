@@ -10,7 +10,8 @@ module.exports = () => {
     const router = new require('koa-router')({prefix: '/bakery'});
 
     router.get('/items', cors(), async ctx => {
-        ctx.body = controller.all();
+        ctx.body = new ApiResponse(200);
+        ctx.body.data = controller.all();
     });
 
     // Route: /order/:sku/:qty
