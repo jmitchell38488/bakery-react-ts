@@ -1,0 +1,36 @@
+.product {
+    position: relative;
+    font-size: 24px;
+}
+
+.product * {
+    color: #4d4d4d;
+}
+
+.product td {
+    background: transparent;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: 1px solid #ededed;
+}
+
+.product td:last-child {
+    text-align: center;
+}
+
+.product {
+    background: #6a6a6a;
+}
+
+.product.odd {
+    background: #3a3a3a;
+}
+
+.product:hover {
+    background: steelblue;
+}
+
+.product:hover td {
+    color: #fff;
+}

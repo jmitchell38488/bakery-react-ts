@@ -1,0 +1,13 @@
+.order-item, .order-item:hover {
+    background: #efefef;
+}
+
+.order-item td,
+.order-item:hover td {
+    color: #333;
+    cursor: default;
+}
+
+.order-item td {
+    border-bottom: 1px solid #282c34;
+}

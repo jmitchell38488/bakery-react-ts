@@ -1,14 +1,19 @@
 import React from 'react';
-import './App.css';
-const logo = require('./logo.svg') as string;
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Index from "./Components/Index";
+import Order from "./Components/Order/Order";
 
-const App: React.FunctionComponent<void> = () => (
-    <div className="App">
-        <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-            <p>Loading data from server...</p>
-        </header>
-    </div>
+type AppProps = {};
+
+export const App: React.FunctionComponent<AppProps> = () => (
+    <Router>
+        <div>
+            <div className="App">
+                <header className="App-header">
+                    <Route path="/" exact render={props => <Index {...props} />} />
+                    <Route path="/order/:id" render={props => <Order {...props} />}/>
+                </header>
+            </div>
+        </div>
+    </Router>
 );
-
-export default App;
